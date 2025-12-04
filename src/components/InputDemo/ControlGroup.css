@@ -1,0 +1,12 @@
+.control-group {
+  margin-bottom: 20px;
+}
+
+.control-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 8px;
+}
+

@@ -1,0 +1,8 @@
+.input-demo-controls {
+  flex: 1;
+  min-width: 320px;
+  padding: 32px;
+  background-color: #f8f9fa;
+  border-left: 1px solid #e9ecef;
+}
+
