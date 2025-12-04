@@ -1,0 +1,25 @@
+/* Точные стили Mantine для placeholder */
+input::placeholder {
+  color: #adb5bd;
+  opacity: 1;
+}
+
+input:disabled::placeholder {
+  color: #ced4da;
+}
+
+input:focus::placeholder {
+  color: #adb5bd;
+}
+
+/* Стили для input при hover (если не disabled) */
+input:not(:disabled):not(:focus):hover {
+  border-color: #c1c7cd;
+}
+
+/* Стили для disabled input */
+input:disabled {
+  background-color: #f1f3f5;
+  color: #868e96;
+  cursor: not-allowed;
+}
