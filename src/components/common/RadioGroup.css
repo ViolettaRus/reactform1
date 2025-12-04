@@ -1,0 +1,37 @@
+.radio-group-container {
+  margin-bottom: 20px;
+}
+
+.radio-group-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #212529;
+  line-height: 1.55;
+}
+
+.radio-group-options {
+  display: flex;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.radio-option-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #212529;
+  line-height: 1.55;
+}
+
+.radio-option-label input[type="radio"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: #228be6;
+  margin: 0;
+}
+
