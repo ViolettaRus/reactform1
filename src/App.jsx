@@ -1,6 +1,6 @@
 import React from 'react';
-import Signin from './components/Signin';
-import Signup from './components/Signup';
+import Signin from './components/Signin/Signin';
+import Signup from './components/Signup/Signup';
 import InputDemo from './components/InputDemo/InputDemo';
 import './App.css';
 

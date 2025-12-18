@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Input from './Input/Input';
-import FormButton from './common/FormButton';
-import RadioGroup from './common/RadioGroup';
-import AtIcon from './common/AtIcon';
+import Input from '../common/Input/Input';
+import FormButton from '../common/FormButton';
+import RadioGroup from '../common/RadioGroup';
+import AtIcon from '../common/AtIcon';
 import './Signup.css';
 
 const Signup = ({ onSubmit }) => {
@@ -15,23 +15,23 @@ const Signup = ({ onSubmit }) => {
     repeatPassword: '',
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleRadioChange = (e) => {
+  const handleRadioChange = (event) => {
     setFormData((prev) => ({
       ...prev,
-      gender: e.target.value,
+      gender: event.target.value,
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (onSubmit) {
       onSubmit(formData);
     }

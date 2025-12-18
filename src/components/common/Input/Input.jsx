@@ -4,7 +4,7 @@ import InputDescription from './InputDescription';
 import InputError from './InputError';
 import InputWrapper from './InputWrapper';
 import { useInputStyles } from './utils/useInputStyles';
-import '../Input.css';
+import './Input.css';
 
 const Input = ({
   type = 'text',
@@ -50,13 +50,13 @@ const Input = ({
           disabled={disabled}
           style={inputStyle}
           id={name}
-          onFocus={(e) => {
+          onFocus={(event) => {
             setIsFocused(true);
-            props.onFocus && props.onFocus(e);
+            props.onFocus && props.onFocus(event);
           }}
-          onBlur={(e) => {
+          onBlur={(event) => {
             setIsFocused(false);
-            props.onBlur && props.onBlur(e);
+            props.onBlur && props.onBlur(event);
           }}
           {...props}
         />
@@ -67,4 +67,5 @@ const Input = ({
 };
 
 export default Input;
+
 

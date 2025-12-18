@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Input from './Input/Input';
-import FormButton from './common/FormButton';
+import Input from '../common/Input/Input';
+import FormButton from '../common/FormButton';
 import './Signin.css';
 
 const Signin = ({ onSubmit }) => {
@@ -9,16 +9,16 @@ const Signin = ({ onSubmit }) => {
     password: '',
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (onSubmit) {
       onSubmit(formData);
     }

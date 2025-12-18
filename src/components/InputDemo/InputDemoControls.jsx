@@ -17,64 +17,65 @@ const InputDemoControls = ({ settings, onSettingChange, getRadiusValue, getSizeV
       <TextControl
         label="Placeholder"
         value={settings.placeholder}
-        onChange={(e) => onSettingChange('placeholder', e.target.value)}
+        onChange={(event) => onSettingChange('placeholder', event.target.value)}
       />
 
       <TextControl
         label="Label"
         value={settings.label}
-        onChange={(e) => onSettingChange('label', e.target.value)}
+        onChange={(event) => onSettingChange('label', event.target.value)}
       />
 
       <TextControl
         label="Description"
         value={settings.description}
-        onChange={(e) => onSettingChange('description', e.target.value)}
+        onChange={(event) => onSettingChange('description', event.target.value)}
         placeholder="Description"
       />
 
       <TextControl
         label="Error"
         value={settings.error}
-        onChange={(e) => onSettingChange('error', e.target.value)}
+        onChange={(event) => onSettingChange('error', event.target.value)}
         placeholder="Error"
       />
 
       <SelectControl
         label="Variant"
         value={settings.variant}
-        onChange={(e) => onSettingChange('variant', e.target.value)}
+        onChange={(event) => onSettingChange('variant', event.target.value)}
         options={variantOptions}
       />
 
       <SliderControl
         label="Radius"
         value={getRadiusValue()}
-        onChange={(e) => handleRadiusChange(parseInt(e.target.value))}
+        onChange={(event) => handleRadiusChange(parseInt(event.target.value))}
         displayValue={settings.radius}
       />
 
       <SliderControl
         label="Size"
         value={getSizeValue()}
-        onChange={(e) => handleSizeChange(parseInt(e.target.value))}
+        onChange={(event) => handleSizeChange(parseInt(event.target.value))}
         displayValue={settings.size}
       />
 
       <ToggleControl
         label="Disabled"
         checked={settings.disabled}
-        onChange={(e) => onSettingChange('disabled', e.target.checked)}
+        onChange={(event) => onSettingChange('disabled', event.target.checked)}
       />
 
       <ToggleControl
         label="With asterisk"
         checked={settings.withAsterisk}
-        onChange={(e) => onSettingChange('withAsterisk', e.target.checked)}
+        onChange={(event) => onSettingChange('withAsterisk', event.target.checked)}
       />
     </div>
   );
 };
 
 export default InputDemoControls;
+
 

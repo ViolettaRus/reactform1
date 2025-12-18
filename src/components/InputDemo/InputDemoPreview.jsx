@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../Input/Input';
+import Input from '../common/Input/Input';
 
 const InputDemoPreview = ({ settings }) => {
   return (
@@ -21,4 +21,5 @@ const InputDemoPreview = ({ settings }) => {
 };
 
 export default InputDemoPreview;
+
 

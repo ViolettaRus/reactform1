@@ -28,3 +28,4 @@ const SliderControl = ({ label, value, onChange, displayValue }) => {
 
 export default SliderControl;
 
+

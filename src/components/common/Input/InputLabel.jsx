@@ -22,3 +22,4 @@ const InputLabel = ({ label, name, withAsterisk }) => {
 
 export default InputLabel;
 
+

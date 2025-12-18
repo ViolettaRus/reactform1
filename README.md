@@ -59,16 +59,22 @@
 form1/
 ├── src/
 │   ├── components/              # React компоненты
-│   │   ├── Input/               # Декомпозированный компонент Input
-│   │   │   ├── Input.jsx        # Главный компонент Input
-│   │   │   ├── InputLabel.jsx   # Компонент лейбла
-│   │   │   ├── InputDescription.jsx  # Компонент описания
-│   │   │   ├── InputError.jsx   # Компонент ошибки
-│   │   │   ├── InputWrapper.jsx # Обертка для input с иконкой
-│   │   │   └── utils/          # Утилиты
-│   │   │       ├── inputConfig.js      # Конфигурация размеров и радиусов
-│   │   │       └── useInputStyles.js    # Хук для вычисления стилей
-│   │   ├── Input.css            # Стили для компонента Input
+│   │   ├── common/              # Общие переиспользуемые компоненты
+│   │   │   ├── Input/           # Декомпозированный компонент Input
+│   │   │   │   ├── Input.jsx    # Главный компонент Input
+│   │   │   │   ├── InputLabel.jsx   # Компонент лейбла
+│   │   │   │   ├── InputDescription.jsx  # Компонент описания
+│   │   │   │   ├── InputError.jsx   # Компонент ошибки
+│   │   │   │   ├── InputWrapper.jsx # Обертка для input с иконкой
+│   │   │   │   ├── Input.css    # Стили для компонента Input
+│   │   │   │   └── utils/      # Утилиты
+│   │   │   │       ├── inputConfig.js      # Конфигурация размеров и радиусов
+│   │   │   │       └── useInputStyles.js    # Хук для вычисления стилей
+│   │   │   ├── FormButton.jsx   # Кнопка формы
+│   │   │   ├── FormButton.css
+│   │   │   ├── RadioGroup.jsx   # Группа радио-кнопок
+│   │   │   ├── RadioGroup.css
+│   │   │   └── AtIcon.jsx       # Иконка @
 │   │   ├── InputDemo/           # Декомпозированный компонент демо-панели
 │   │   │   ├── InputDemo.jsx    # Главный компонент демо-панели
 │   │   │   ├── InputDemoPreview.jsx    # Превью компонента
@@ -79,16 +85,12 @@ form1/
 │   │   │   ├── SliderControl.jsx      # Слайдер
 │   │   │   ├── ToggleControl.jsx      # Переключатель
 │   │   │   └── *.css                  # Стили для каждого компонента
-│   │   ├── common/              # Общие переиспользуемые компоненты
-│   │   │   ├── FormButton.jsx   # Кнопка формы
-│   │   │   ├── FormButton.css
-│   │   │   ├── RadioGroup.jsx   # Группа радио-кнопок
-│   │   │   ├── RadioGroup.css
-│   │   │   └── AtIcon.jsx       # Иконка @
-│   │   ├── Signin.jsx           # Компонент формы входа
-│   │   ├── Signin.css           # Стили для формы входа
-│   │   ├── Signup.jsx           # Компонент формы регистрации
-│   │   └── Signup.css           # Стили для формы регистрации
+│   │   ├── Signin/              # Компонент формы входа
+│   │   │   ├── Signin.jsx       # Компонент формы входа
+│   │   │   └── Signin.css       # Стили для формы входа
+│   │   └── Signup/              # Компонент формы регистрации
+│   │       ├── Signup.jsx       # Компонент формы регистрации
+│   │       └── Signup.css       # Стили для формы регистрации
 │   ├── App.jsx                  # Главный компонент приложения
 │   ├── App.css                  # Глобальные стили приложения
 │   └── main.jsx                 # Точка входа в приложение
@@ -100,7 +102,7 @@ form1/
 
 ### Описание модулей
 
-#### `src/components/Input/` — Декомпозированный компонент Input
+#### `src/components/common/Input/` — Декомпозированный компонент Input
 
 **Главный компонент:**
 - `Input.jsx` — основной компонент, объединяющий все подкомпоненты. Импортирует подкомпоненты и использует хук `useInputStyles` для вычисления стилей.
@@ -116,7 +118,7 @@ form1/
 - `utils/useInputStyles.js` — кастомный хук для вычисления стилей на основе props. Возвращает `inputStyle`, `leftSectionStyle`, `isFocused`, `setIsFocused`
 
 **Стили:**
-- `../Input.css` — стили для компонента Input (placeholder, hover, disabled состояния)
+- `Input.css` — стили для компонента Input (placeholder, hover, disabled состояния)
 
 **Особенности:**
 - Все стандартные HTML-атрибуты input поддерживаются через `...props`
@@ -156,22 +158,36 @@ form1/
 - Все контролы изолированы и переиспользуемы
 - Слайдеры визуально показывают заполненную часть синим цветом
 
-#### `src/components/Signin.jsx`
-Компонент формы входа. Использует:
-- Два компонента `Input/Input.jsx` (email и password)
+#### `src/components/Signin/` — Компонент формы входа
+
+**Файлы:**
+- `Signin.jsx` — компонент формы входа
+- `Signin.css` — стили для формы входа
+
+**Использует:**
+- Два компонента `common/Input/Input.jsx` (email и password)
 - Компонент `common/FormButton.jsx` для кнопки отправки
 - Локальное состояние (`useState`) для управления данными формы
 - Обработчик отправки формы, который вызывает `onSubmit` с объектом `{ email, password }`
 
 **Импорты:**
 ```jsx
-import Input from './Input/Input';
-import FormButton from './common/FormButton';
+import Input from '../common/Input/Input';
+import FormButton from '../common/FormButton';
 ```
 
-#### `src/components/Signup.jsx`
-Компонент формы регистрации. Использует:
-- Несколько компонентов `Input/Input.jsx` для различных полей (имя, ник, почта, пароль, повторить пароль)
+**Особенности:**
+- Использует полные имена параметров (`event` вместо `e`) для лучшей читаемости
+- Все стили изолированы в директории компонента
+
+#### `src/components/Signup/` — Компонент формы регистрации
+
+**Файлы:**
+- `Signup.jsx` — компонент формы регистрации
+- `Signup.css` — стили для формы регистрации
+
+**Использует:**
+- Несколько компонентов `common/Input/Input.jsx` для различных полей (имя, ник, почта, пароль, повторить пароль)
 - Компонент `common/AtIcon.jsx` для поля никнейма (передается как `icon` prop)
 - Компонент `common/RadioGroup.jsx` для выбора пола
 - Компонент `common/FormButton.jsx` для кнопки отправки
@@ -179,11 +195,15 @@ import FormButton from './common/FormButton';
 
 **Импорты:**
 ```jsx
-import Input from './Input/Input';
-import FormButton from './common/FormButton';
-import RadioGroup from './common/RadioGroup';
-import AtIcon from './common/AtIcon';
+import Input from '../common/Input/Input';
+import FormButton from '../common/FormButton';
+import RadioGroup from '../common/RadioGroup';
+import AtIcon from '../common/AtIcon';
 ```
+
+**Особенности:**
+- Использует полные имена параметров (`event` вместо `e`) для лучшей читаемости
+- Все стили изолированы в директории компонента
 
 #### `src/App.jsx`
 Главный компонент, который:
@@ -197,30 +217,32 @@ import AtIcon from './common/AtIcon';
 App.jsx
 ├── InputDemo/InputDemo.jsx
 │   ├── InputDemoPreview.jsx
-│   │   └── Input/Input.jsx (с различными настройками)
+│   │   └── common/Input/Input.jsx (с различными настройками)
 │   └── InputDemoControls.jsx
 │       ├── TextControl.jsx (Placeholder, Label, Description, Error)
 │       ├── SelectControl.jsx (Variant)
 │       ├── SliderControl.jsx (Radius, Size)
 │       └── ToggleControl.jsx (Disabled, With asterisk)
-├── Signin.jsx
-│   ├── Input/Input.jsx (email, password)
+├── Signin/Signin.jsx
+│   ├── common/Input/Input.jsx (email, password)
 │   └── common/FormButton.jsx
-└── Signup.jsx
-    ├── Input/Input.jsx (имя, ник с иконкой, почта, пароль, повторить пароль)
+└── Signup/Signup.jsx
+    ├── common/Input/Input.jsx (имя, ник с иконкой, почта, пароль, повторить пароль)
     ├── common/RadioGroup.jsx (пол)
     ├── common/AtIcon.jsx (иконка для поля никнейма)
     └── common/FormButton.jsx
 ```
 
-Все компоненты используют единый `Input/Input.jsx`, что обеспечивает консистентность дизайна и поведения. Декомпозиция позволяет легко поддерживать и расширять код.
+Все компоненты используют единый `common/Input/Input.jsx`, что обеспечивает консистентность дизайна и поведения. Декомпозиция позволяет легко поддерживать и расширять код.
 
 **Пути импорта:**
-- `Input`: `import Input from './components/Input/Input'`
+- `Input`: `import Input from './components/common/Input/Input'`
 - `FormButton`: `import FormButton from './components/common/FormButton'`
 - `RadioGroup`: `import RadioGroup from './components/common/RadioGroup'`
 - `AtIcon`: `import AtIcon from './components/common/AtIcon'`
 - `InputDemo`: `import InputDemo from './components/InputDemo/InputDemo'`
+- `Signin`: `import Signin from './components/Signin/Signin'`
+- `Signup`: `import Signup from './components/Signup/Signup'`
 
 ## Как запускать / использовать / тестировать
 
@@ -372,7 +394,7 @@ npm run preview
 Компонент `Input` можно легко использовать в других проектах:
 
 ```jsx
-import Input from './components/Input/Input';
+import Input from './components/common/Input/Input';
 
 function MyForm() {
   const [value, setValue] = useState('');
@@ -395,10 +417,10 @@ function MyForm() {
 Также можно использовать отдельные подкомпоненты:
 
 ```jsx
-import InputLabel from './components/Input/InputLabel';
-import InputError from './components/Input/InputError';
-import InputDescription from './components/Input/InputDescription';
-import InputWrapper from './components/Input/InputWrapper';
+import InputLabel from './components/common/Input/InputLabel';
+import InputError from './components/common/Input/InputError';
+import InputDescription from './components/common/Input/InputDescription';
+import InputWrapper from './components/common/Input/InputWrapper';
 
 // Использование отдельных частей для кастомных решений
 ```
@@ -406,9 +428,9 @@ import InputWrapper from './components/Input/InputWrapper';
 Использование общих компонентов:
 
 ```jsx
-import FormButton from './components/common/FormButton';
-import RadioGroup from './components/common/RadioGroup';
-import AtIcon from './components/common/AtIcon';
+import FormButton from '../common/FormButton';
+import RadioGroup from '../common/RadioGroup';
+import AtIcon from '../common/AtIcon';
 
 // FormButton - универсальная кнопка для форм
 <FormButton>Отправить</FormButton>
